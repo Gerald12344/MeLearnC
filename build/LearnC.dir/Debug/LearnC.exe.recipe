@@ -5,6 +5,9 @@
       <FullPath>H:\Desktop\code\MeLearnC\build\x64\Debug\ZERO_CHECK</FullPath>
     </ProjectOutput>
     <ProjectOutput>
+      <FullPath>H:\Desktop\code\MeLearnC\build\vendor\cglm\Debug\cglm-0.dll</FullPath>
+    </ProjectOutput>
+    <ProjectOutput>
       <FullPath>H:\Desktop\code\MeLearnC\build\Debug\LearnC.exe</FullPath>
     </ProjectOutput>
   </ProjectOutputs>

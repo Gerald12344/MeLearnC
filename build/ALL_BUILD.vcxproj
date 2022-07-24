@@ -177,6 +177,10 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
       <Project>{57FFF2AC-F237-3162-8F54-01027295B7E0}</Project>
       <Name>LearnC</Name>
     </ProjectReference>
+    <ProjectReference Include="H:\Desktop\code\MeLearnC\build\vendor\cglm\cglm.vcxproj">
+      <Project>{A965D09A-2CB6-3BD0-8F12-A9720018567E}</Project>
+      <Name>cglm</Name>
+    </ProjectReference>
     <ProjectReference Include="H:\Desktop\code\MeLearnC\build\vendor\glfw\src\glfw.vcxproj">
       <Project>{9C63C6EA-7A69-3756-AD9C-7833FBF6ED07}</Project>
       <Name>glfw</Name>

@@ -3,6 +3,7 @@ cmake_minimum_required(VERSION 3.23)
 project(LearnC)
 
 add_subdirectory(vendor/glfw)
+add_subdirectory(vendor/cglm)
 include_directories(vendor/glad/include)
 
 file(GLOB SRC
@@ -19,4 +20,4 @@ add_executable(LearnC
 # OpenGL
 find_package(OpenGL REQUIRED)
 
-target_link_libraries(LearnC PUBLIC glfw opengl32)
+target_link_libraries(LearnC PUBLIC glfw opengl32 cglm)

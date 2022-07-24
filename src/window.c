@@ -36,7 +36,7 @@ int main(void)
     // Dark blue background
     glClearColor(0.0f, 0.0f, 0.4f, 0.0f);
 
-    GLuint programID = LoadShaders("src/shaders/cube.vert", "src/shaders/cube.frag");
+    GLuint programID = LoadShaders("shaders/cube.vert", "shaders/cube.frag");
     glUseProgram(programID);
 
     createCube();
