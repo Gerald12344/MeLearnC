@@ -1,0 +1,10 @@
+H:/Desktop/code/MeLearnC/build/CMakeFiles/LearnC.dir
+H:/Desktop/code/MeLearnC/build/CMakeFiles/INSTALL.dir
+H:/Desktop/code/MeLearnC/build/CMakeFiles/ALL_BUILD.dir
+H:/Desktop/code/MeLearnC/build/CMakeFiles/ZERO_CHECK.dir
+H:/Desktop/code/MeLearnC/build/vendor/glfw/CMakeFiles/uninstall.dir
+H:/Desktop/code/MeLearnC/build/vendor/glfw/CMakeFiles/INSTALL.dir
+H:/Desktop/code/MeLearnC/build/vendor/glfw/CMakeFiles/ALL_BUILD.dir
+H:/Desktop/code/MeLearnC/build/vendor/glfw/src/CMakeFiles/glfw.dir
+H:/Desktop/code/MeLearnC/build/vendor/glfw/src/CMakeFiles/update_mappings.dir
+H:/Desktop/code/MeLearnC/build/vendor/glfw/src/CMakeFiles/INSTALL.dir
