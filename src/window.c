@@ -2,6 +2,8 @@
 #include "GLFW/glfw3.h"
 #include "cube.h"
 #include <stdio.h>
+#include "cglm/cglm.h"
+#include "core/frameRate.h"
 
 int main(void)
 {
@@ -33,11 +35,16 @@ int main(void)
         return -1;
     }
 
+    glEnable(GL_MULTISAMPLE);
+    glEnable(GL_CULL_FACE);
+
+    startFPSCounter();
+
     // Dark blue background
     glClearColor(0.0f, 0.0f, 0.4f, 0.0f);
 
     GLuint programID = LoadShaders("shaders/cube.vert", "shaders/cube.frag");
-    glUseProgram(programID);
+    GLuint MatrixID = glGetUniformLocation(programID, "MVP");
 
     createCube();
 
@@ -47,7 +54,10 @@ int main(void)
         /* Render here */
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
+        calculateFPS();
+
         cube();
+        spinCube(programID, MatrixID);
 
         /* Swap front and back buffers */
         glfwSwapBuffers(window);
@@ -56,6 +66,7 @@ int main(void)
         glfwPollEvents();
     }
 
+    glDeleteProgram(programID);
     glfwTerminate();
     return 0;
 }

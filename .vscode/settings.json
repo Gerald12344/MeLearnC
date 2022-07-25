@@ -45,6 +45,8 @@
         "xstddef": "c",
         "xstring": "c",
         "xtr1common": "c",
-        "xutility": "c"
+        "xutility": "c",
+        "mat4.h": "c",
+        "framerate.h": "c"
     }
 }

@@ -309,6 +309,7 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
     </CustomBuild>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="H:\Desktop\code\MeLearnC\src\core\frameRate.c" />
     <ClCompile Include="H:\Desktop\code\MeLearnC\src\cube.c" />
     <ClCompile Include="H:\Desktop\code\MeLearnC\src\shader.c" />
     <ClCompile Include="H:\Desktop\code\MeLearnC\src\window.c" />

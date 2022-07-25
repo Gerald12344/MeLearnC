@@ -2,12 +2,21 @@
 #include "glad/glad.h"
 #include "GLFW/glfw3.h"
 #include "shader.h"
+#include "cglm/cglm.h"
+#include <stdio.h>
 
 GLuint vertexbuffer;
 GLuint colorbuffer;
 
+float horizontalAngle = 3.14f;
+// Initial vertical angle : none
+float verticalAngle = 0.0f;
+double lastTime; // For like time difference
+
 void createCube()
 {
+    lastTime = glfwGetTime();
+
     GLuint VertexArrayID;
     glGenVertexArrays(1, &VertexArrayID);
     glBindVertexArray(VertexArrayID);
@@ -123,4 +132,56 @@ void cube()
         0,        // stride
         (void *)0 // array buffer offset
     );
+}
+
+void spinCube(GLuint programID, GLuint MatrixID)
+{
+    // Compute time difference between current and last frame
+    double currentTime = glfwGetTime();
+    float deltaTime = currentTime - lastTime;
+
+    // Direction
+    mat4 direction;
+    horizontalAngle += deltaTime * 0.8f;
+    verticalAngle -= deltaTime * 0.2f;
+
+    vec3 anglesIn = {horizontalAngle, verticalAngle, 0.0f};
+    glm_euler(
+        anglesIn,
+        direction);
+
+    mat4 Projection;
+    float angle = 45.0f;
+    glm_make_rad(&angle);
+
+    glm_perspective(angle, 4.0f / 3.0f, 0.1f, 100.0f, Projection);
+
+    // Camera matrix
+    vec3 cameraPosition = {5.0f, 3.0f, 3.0f};
+    vec3 cameraTarget = {0.0f, 0.0f, 0.0f};
+    vec3 cameraUp = {0.0f, -1.0f, 0.0f};
+    mat4 View;
+    vec3 posAndDirection;
+    glm_vec3_add(cameraTarget, anglesIn, posAndDirection);
+    glm_lookat(
+        cameraPosition, // Camera is at (4,3,3), in World Space
+        cameraTarget,   // and looks at the origin
+        cameraUp,       // Head is up (set to 0,-1,0 to look upside-down)
+        View            // target matrix
+    );
+    // Model matrix
+    mat4 Model;
+    mat4 projectAndView;
+    mat4 Position;
+    mat4 MVP;
+    glm_mat4_identity(Model);
+
+    glm_mat4_mul(Projection, View, projectAndView);
+    glm_mat4_mul(projectAndView, Model, Position);
+    glm_mat4_mul(Position, direction, MVP);
+
+    glUseProgram(programID);
+    glUniformMatrix4fv(MatrixID, 1, GL_FALSE, &MVP[0][0]);
+
+    lastTime = glfwGetTime();
 }
