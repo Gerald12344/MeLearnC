@@ -2,7 +2,7 @@
 
 #include "glad/glad.h"
 
-void cube();
+void cube(GLuint Texture, GLuint TextureID);
 
 void createCube();
 

@@ -4,6 +4,8 @@
 #include <stdio.h>
 #include "cglm/cglm.h"
 #include "core/frameRate.h"
+#include "utils/shader.h"
+#include "utils/texture.h"
 
 int main(void)
 {
@@ -45,6 +47,8 @@ int main(void)
 
     GLuint programID = LoadShaders("shaders/cube.vert", "shaders/cube.frag");
     GLuint MatrixID = glGetUniformLocation(programID, "MVP");
+    GLuint Texture = loadBMP_custom("shaders/UVMaps/uvtemplate.bmp");
+    GLuint TextureID = glGetUniformLocation(programID, "myTextureSampler");
 
     createCube();
 
@@ -56,7 +60,7 @@ int main(void)
 
         calculateFPS();
 
-        cube();
+        cube(Texture, TextureID);
         spinCube(programID, MatrixID);
 
         /* Swap front and back buffers */
